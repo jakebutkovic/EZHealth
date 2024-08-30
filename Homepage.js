@@ -1,14 +1,34 @@
-const { createServer } = require('node:http');
+const express = require('express');
+const app = express();
+const port = 3000; // Choose the port you want to run your app on
 
-const hostname = '127.0.0.1';
-const port = 3000;
-
-const server = createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
+// Set up the homepage route
+app.get('/', (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>HelpMyBrain!</title>
+      <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f8ff; text-align: center; padding: 50px; }
+        h1 { color: #333; }
+        p { color: #666; font-size: 18px; }
+        .button { display: inline-block; padding: 10px 20px; margin: 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px; }
+      </style>
+    </head>
+    <body>
+      <h1>Welcome to HelpMyBrain!</h1>
+      <p>Your go-to resource for mental wellness and brain health.</p>
+      <a href="#" class="button">Learn More</a>
+    </body>
+    </html>
+  `);
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+// Start the server
+app.listen(port, () => {
+  console.log(`HelpMyBrain! website is running at http://localhost:${port}`);
 });
