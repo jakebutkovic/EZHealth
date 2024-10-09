@@ -1,0 +1,36 @@
+Team Leader’s Group Progress Report
+Period: 10/2-10/9
+Group Project Title: EZ-Health
+Team Leader’s Name: Anna Anello
+Please describe your contributions as the team leader of your group for the indicated period by
+completing the questions below
+1.	Organizing work.
+1.	Submit the project timeline via canvas for the indicated period under review
+I uploaded the updated gantt chart, delegated tasks, and also assigned who is responsible for what slides for the progress presentation. 
+ 
+ 
+2.	Communicating goals
+1.	Did you discuss the milestones and deliverables (noted in the Project Timeline) with team members?
+Yes, we have the progress report presentation due on the 9th so I communicated this with my group. 
+3.	Did you delegate tasks (described in the Timeline) to team members?
+Yes. I communicated with who is responsible for what slides and that we need to actually start coding and who is responsible for what part of the code. 
+ 
+ 
+4.	Did you moderate meetings/discussions?
+ I moderated the discussion in the lab and over discord about the project. 
+ 
+5.	Any contributions to problem solving?
+Yes, I made the final decision that we are using flask and MySQL in order to create our website rather than a C++ backend. 
+ 
+ 
+6.	Did you coach to improve team member skill sets?
+ Yes. I sent resources to learn how to use flask.
+ 
+7.	How did you motivate team members to accomplish their goals?
+ I would give reminders and regular check-ins. 
+ 
+8.	Reporting group progress to the TAs and Instructor
+Yes, I talked to Giovanni about the issues that we were running into.
+9.	Submit weekly progress report via Canvas
+Not on canvas, it will be on the github. 
+
