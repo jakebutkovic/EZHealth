@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './Navbar';
-import HomePage from './HomePage';
-import UserProfile from './UserProfile';
-import SymptomsPage from './SymptomsPage';
-import AINotesPage from './AINotesPage';
+import Navbar from '/workspaces/EZHealth/ez-health/src/components/NavBar.js';
+import HomePage from '/workspaces/EZHealth/ez-health/src/Homepage.js';
+import UserProfile from '/workspaces/EZHealth/ez-health/src/Profile.js';
+import SymptomsPage from '/workspaces/EZHealth/ez-health/src/Symptoms.js';
+import AINotesPage from '/workspaces/EZHealth/ez-health/src/AINotes.js';
 
 function App() {
   return (
