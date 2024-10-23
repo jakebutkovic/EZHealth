@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function ProfilePage() {
+function DoctorProfile() {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -11,6 +11,8 @@ function ProfilePage() {
   const [gender, setGender] = useState('');
   const [pronouns, setPronouns] = useState('');
   const [profilePhoto, setProfilePhoto] = useState(null);
+  const [location, setLocation] = useState('');
+  const [specialty, setSpecialty] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,13 +26,15 @@ function ProfilePage() {
       gender,
       pronouns,
       profilePhoto,
+      location,
+      specialty,
     });
     navigate('/'); // Redirect to the homepage after submission
   };
 
   return (
     <div style={{ backgroundColor: 'lightblue', height: '100vh', padding: '20px' }}>
-      <h1>Patient Profile</h1>
+      <h1>Doctor Profile</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label>First Name:</label>
@@ -64,10 +68,18 @@ function ProfilePage() {
           <label>Profile Photo:</label>
           <input type="file" onChange={(e) => setProfilePhoto(e.target.files[0])} required />
         </div>
+        <div>
+          <label>Location:</label>
+          <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} required />
+        </div>
+        <div>
+          <label>Specialty:</label>
+          <input type="text" value={specialty} onChange={(e) => setSpecialty(e.target.value)} required />
+        </div>
         <button type="submit">Submit</button>
       </form>
     </div>
   );
 }
 
-export default ProfilePage;
+export default DoctorProfile;
