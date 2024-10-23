@@ -5,6 +5,9 @@ import HomePage from '/workspaces/EZHealth/ez-health/src/Homepage.js';
 import UserProfile from '/workspaces/EZHealth/ez-health/src/Profile.js';
 import SymptomsPage from '/workspaces/EZHealth/ez-health/src/Symptoms.js';
 import AINotesPage from '/workspaces/EZHealth/ez-health/src/AINotes.js';
+import DoctorProfile from '/workspaces/EZHealth/ez-health/src/DoctorProfile.js';
+import SupportTicket from '/workspaces/EZHealth/ez-health/src/SupportTicket.js';
+import AINotesPatient from '/workspaces/EZHealth/ez-health/src//AINotesPatient';
 
 function App() {
   return (
@@ -16,6 +19,10 @@ function App() {
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/symptoms" element={<SymptomsPage />} />
           <Route path="/ai-notes" element={<AINotesPage />} />
+          <Route path="/ai-notes" element={<AINotesPage />} />
+          <Route path="/doctorprofile" element={<DoctorProfile />} />
+          <Route path="/supportticket" element={<SupportTicket />} />
+          <Route path="/ainotespatient" element={<AINotesPatient />} />
         </Routes>
       </div>
     </Router>
