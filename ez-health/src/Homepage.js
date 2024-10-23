@@ -6,8 +6,8 @@ function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogin = () => {
-    // Handle login functionality here
-    navigate('/profile'); // Redirect to the profile page after login
+    // Redirect to the login page
+    navigate('/login');
   };
 
   const handleNavigation = (path) => {
