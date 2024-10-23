@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Support() {
+function SupportTicket() {
   const navigate = useNavigate();
   const [ticketText, setTicketText] = useState('');
 
@@ -32,4 +32,4 @@ function Support() {
   );
 }
 
-export default Support;
+export default SupportTicket;

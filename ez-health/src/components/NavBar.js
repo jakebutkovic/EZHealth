@@ -26,10 +26,10 @@ function Navbar() {
             <Link to="/ai-notes" onClick={toggleMenu}>AI Notes</Link>
           </li>
           <li>
-            <Link to="/doctor-profile" onClick={toggleMenu}>Doctor Profile</Link>
+            <Link to="/doctorprofile" onClick={toggleMenu}>Doctor Profile</Link>
           </li>
           <li>
-            <Link to="/support" onClick={toggleMenu}>Support Ticket</Link>
+            <Link to="/supportticket" onClick={toggleMenu}>Support Ticket</Link>
           </li>
         </ul>
       )}
