@@ -31,6 +31,15 @@ function Navbar() {
           <li>
             <Link to="/supportticket" onClick={toggleMenu}>Support Ticket</Link>
           </li>
+          <li>
+            <Link to="/ainotespatient" onClick={toggleMenu}>AI Notes Patient</Link>
+          </li>
+          <li>
+            <Link to="/patientslist" onClick={toggleMenu}>Patients List</Link>
+          </li>
+          <li> 
+            <Link to="/login" onClick={toggleMenu}>Login</Link>
+          </li>
         </ul>
       )}
     </nav>
