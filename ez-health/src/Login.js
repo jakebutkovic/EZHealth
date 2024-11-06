@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const navigate = useNavigate();
- 
+
   const [email, checkEmail] = useState('');
   const [password, checkPassword] = useState('')
 
@@ -17,7 +17,7 @@ function Login() {
   };
 
   return (
-    <div style={{ backgroundColor: '#e9f4f9', minHeight: '100vh', padding: '140px', display: 'flex', justifyContent: 'center' }}>
+    <div style={{ backgroundColor: '#e9f4f9', alignItems: 'flex-start', minHeight: '100vh', padding: '100px', display: 'flex', justifyContent: 'center' }}>
       <div
         style={{
           maxWidth: '600px',
@@ -30,7 +30,7 @@ function Login() {
       >
         <h1 style={{ color: '#333', marginBottom: '30px', textAlign: 'center' }}>Log In</h1>
         <form onSubmit={handleSubmit}>
-         
+
           <div style={{ marginBottom: '15px' }}>
             <label style={{ display: 'block', fontWeight: 'bold', color: '#333', marginBottom: '5px' }}>Email:</label>
             <input
