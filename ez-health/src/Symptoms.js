@@ -32,19 +32,43 @@ function SymptomsPage() {
   };
 
   return (
-    <div style={{ display: 'flex', backgroundColor: 'lightblue', height: '100vh', padding: '20px' }}>
-      <div style={{ flex: 1 }}>
-        <h1>Symptoms</h1>
+    <div style={{ display: 'flex', backgroundColor: '#f0f4f8', height: '100vh', padding: '20px' }}>
+      {/* Sidebar for Symptoms List */}
+      <div style={{ flex: 1, marginRight: '20px' }}>
+        <h1 style={{ color: '#333', marginBottom: '20px' }}>Symptoms</h1>
         {symptoms.map((symptom) => (
-          <div key={symptom.name} onClick={() => handleSymptomClick(symptom)}>
-            <h2>{symptom.name}</h2>
+          <div
+            key={symptom.name}
+            onClick={() => handleSymptomClick(symptom)}
+            style={{
+              padding: '15px',
+              backgroundColor: selectedSymptom === symptom ? '#e0f7fa' : 'white',
+              borderRadius: '8px',
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+              marginBottom: '15px',
+              cursor: 'pointer',
+              transition: 'background-color 0.3s ease',
+            }}
+          >
+            <h2 style={{ color: '#00796b' }}>{symptom.name}</h2>
             {selectedSymptom === symptom && (
-              <div>
+              <div style={{ marginTop: '10px' }}>
                 {symptom.entries.map((entry) => (
-                  <div key={entry.date} onClick={() => handleDateClick(entry)}>
-                    <p>Date: {entry.date}</p>
-                    <p>Severity: {entry.severity}</p>
-                    <p>Notes: {entry.notes}</p>
+                  <div
+                    key={entry.date}
+                    onClick={() => handleDateClick(entry)}
+                    style={{
+                      padding: '10px',
+                      borderRadius: '5px',
+                      backgroundColor: selectedDate === entry ? '#f1f8e9' : '#f7f9fc',
+                      marginBottom: '8px',
+                      cursor: 'pointer',
+                      transition: 'background-color 0.3s ease',
+                    }}
+                  >
+                    <p><strong>Date:</strong> {entry.date}</p>
+                    <p><strong>Severity:</strong> {entry.severity}</p>
+                    <p><strong>Notes:</strong> {entry.notes}</p>
                   </div>
                 ))}
               </div>
@@ -52,14 +76,25 @@ function SymptomsPage() {
           </div>
         ))}
       </div>
+
+      {/* Detail Panel for Selected Symptom */}
       <div style={{ flex: 1 }}>
         {selectedSymptom && (
-          <div>
-            <h2>{selectedSymptom.name} Severity Over Time</h2>
-            <ul>
+          <div
+            style={{
+              padding: '20px',
+              backgroundColor: 'white',
+              borderRadius: '8px',
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+            }}
+          >
+            <h2 style={{ color: '#00796b', marginBottom: '20px' }}>
+              {selectedSymptom.name} Severity Over Time
+            </h2>
+            <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
               {selectedSymptom.entries.map((entry) => (
-                <li key={entry.date}>
-                  {entry.date}: {entry.severity}
+                <li key={entry.date} style={{ marginBottom: '10px' }}>
+                  <span style={{ fontWeight: 'bold' }}>{entry.date}:</span> Severity {entry.severity}
                 </li>
               ))}
             </ul>

@@ -16,7 +16,6 @@ function DoctorProfile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
     console.log({
       firstName,
       lastName,
@@ -33,51 +32,176 @@ function DoctorProfile() {
   };
 
   return (
-    <div style={{ backgroundColor: 'lightblue', height: '100vh', padding: '20px' }}>
-      <h1>Doctor Profile</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>First Name:</label>
-          <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
-        </div>
-        <div>
-          <label>Last Name:</label>
-          <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
-        </div>
-        <div>
-          <label>Date of Birth:</label>
-          <input type="date" value={dob} onChange={(e) => setDob(e.target.value)} required />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </div>
-        <div>
-          <label>Phone Number:</label>
-          <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required />
-        </div>
-        <div>
-          <label>Gender:</label>
-          <input type="text" value={gender} onChange={(e) => setGender(e.target.value)} required />
-        </div>
-        <div>
-          <label>Pronouns:</label>
-          <input type="text" value={pronouns} onChange={(e) => setPronouns(e.target.value)} required />
-        </div>
-        <div>
-          <label>Profile Photo:</label>
-          <input type="file" onChange={(e) => setProfilePhoto(e.target.files[0])} required />
-        </div>
-        <div>
-          <label>Location:</label>
-          <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} required />
-        </div>
-        <div>
-          <label>Specialty:</label>
-          <input type="text" value={specialty} onChange={(e) => setSpecialty(e.target.value)} required />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+    <div style={{ backgroundColor: '#e9f4f9', height: '100vh', padding: '40px', display: 'flex', justifyContent: 'center' }}>
+      <div
+        style={{
+          maxWidth: '600px',
+          width: '100%',
+          backgroundColor: 'white',
+          padding: '30px',
+          borderRadius: '10px',
+          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+        }}
+      >
+        <h1 style={{ color: '#333', marginBottom: '30px', textAlign: 'center' }}>Doctor Profile</h1>
+        <form onSubmit={handleSubmit}>
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold', color: '#333', marginBottom: '5px' }}>First Name:</label>
+            <input
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+              style={{
+                width: '100%',
+                padding: '10px',
+                borderRadius: '5px',
+                border: '1px solid #ccc',
+              }}
+            />
+          </div>
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold', color: '#333', marginBottom: '5px' }}>Last Name:</label>
+            <input
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
+              style={{
+                width: '100%',
+                padding: '10px',
+                borderRadius: '5px',
+                border: '1px solid #ccc',
+              }}
+            />
+          </div>
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold', color: '#333', marginBottom: '5px' }}>Date of Birth:</label>
+            <input
+              type="date"
+              value={dob}
+              onChange={(e) => setDob(e.target.value)}
+              required
+              style={{
+                width: '100%',
+                padding: '10px',
+                borderRadius: '5px',
+                border: '1px solid #ccc',
+              }}
+            />
+          </div>
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold', color: '#333', marginBottom: '5px' }}>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              style={{
+                width: '100%',
+                padding: '10px',
+                borderRadius: '5px',
+                border: '1px solid #ccc',
+              }}
+            />
+          </div>
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold', color: '#333', marginBottom: '5px' }}>Phone Number:</label>
+            <input
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+              style={{
+                width: '100%',
+                padding: '10px',
+                borderRadius: '5px',
+                border: '1px solid #ccc',
+              }}
+            />
+          </div>
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold', color: '#333', marginBottom: '5px' }}>Gender:</label>
+            <input
+              type="text"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              required
+              style={{
+                width: '100%',
+                padding: '10px',
+                borderRadius: '5px',
+                border: '1px solid #ccc',
+              }}
+            />
+          </div>
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold', color: '#333', marginBottom: '5px' }}>Pronouns:</label>
+            <input
+              type="text"
+              value={pronouns}
+              onChange={(e) => setPronouns(e.target.value)}
+              required
+              style={{
+                width: '100%',
+                padding: '10px',
+                borderRadius: '5px',
+                border: '1px solid #ccc',
+              }}
+            />
+          </div>
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold', color: '#333', marginBottom: '5px' }}>Profile Photo:</label>
+            <input type="file" onChange={(e) => setProfilePhoto(e.target.files[0])} required />
+          </div>
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold', color: '#333', marginBottom: '5px' }}>Location:</label>
+            <input
+              type="text"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              required
+              style={{
+                width: '100%',
+                padding: '10px',
+                borderRadius: '5px',
+                border: '1px solid #ccc',
+              }}
+            />
+          </div>
+          <div style={{ marginBottom: '20px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold', color: '#333', marginBottom: '5px' }}>Specialty:</label>
+            <input
+              type="text"
+              value={specialty}
+              onChange={(e) => setSpecialty(e.target.value)}
+              required
+              style={{
+                width: '100%',
+                padding: '10px',
+                borderRadius: '5px',
+                border: '1px solid #ccc',
+              }}
+            />
+          </div>
+          <button
+            type="submit"
+            style={{
+              width: '100%',
+              padding: '12px',
+              backgroundColor: '#00796b',
+              color: 'white',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              fontSize: '16px',
+              fontWeight: 'bold',
+            }}
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
