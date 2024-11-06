@@ -50,10 +50,11 @@ function Login() {
           <div style={{ marginBottom: '15px' }}>
             <label style={{ display: 'block', fontWeight: 'bold', color: '#333', marginBottom: '5px' }}>Password:</label>
             <input
-              type="text"
+              type="password"
               value={password}
               onChange={(e) => checkPassword(e.target.value)}
               required
+              
               style={{
                 width: '100%',
                 padding: '10px',
