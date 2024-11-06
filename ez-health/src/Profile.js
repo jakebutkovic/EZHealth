@@ -42,8 +42,8 @@ function ProfilePage() {
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.header}>Patient Profile</h1>
       <form onSubmit={handleSubmit} style={styles.form}>
+        <h1 style={styles.header}>Patient Profile</h1>
         <div style={styles.inputGroup}>
           <label>First Name:</label>
           <input 
@@ -141,15 +141,15 @@ const styles = {
   container: {
     backgroundColor: '#e3f2fd',
     height: '100vh',
-    padding: '40px',
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'left',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   header: {
-    textAlign: 'left',
+    textAlign: 'left',  // Align to the left
     color: '#1565c0',
+    fontSize: '2rem',    // Increase font size
+    fontWeight: 'bold',
     marginBottom: '20px',
   },
   form: {
