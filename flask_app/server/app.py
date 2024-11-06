@@ -1,4 +1,4 @@
-from flask import Flask, render_template, g
+from flask import Flask, render_template, g, jsonify
 import sqlite3
 
 app = Flask(__name__)
@@ -16,14 +16,16 @@ def get_db():
 def home():
     return render_template('index.html')
 
+"""
 @app.route('/users', methods=['GET'])
 def get_users():
     db = get_db()
     query = "SELECT * FROM users"
     users = db.execute(query).fetchall()
     users_list = [dict(user) for user in users]
-    return jsonify(user_list)
-
+    return jsonify(users_list)
+"""
+    
 @app.teardown_appcontext
 def close_connection(exception):
     db = getattr(g, '_ezhealth1', None)
