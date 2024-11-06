@@ -23,8 +23,13 @@ function SymptomsPage() {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const handleSymptomClick = (symptom) => {
-    setSelectedSymptom(symptom);
-    setSelectedDate(null);
+    if (selectedSymptom === symptom) {
+      // Collapse if already selected
+      setSelectedSymptom(null);
+    } else {
+      setSelectedSymptom(symptom);
+      setSelectedDate(null); // Reset selected date when a new symptom is selected
+    }
   };
 
   const handleDateClick = (date) => {
