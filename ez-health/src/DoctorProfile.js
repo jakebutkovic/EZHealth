@@ -32,7 +32,7 @@ function DoctorProfile() {
   };
 
   return (
-    <div style={{ backgroundColor: '#e9f4f9', height: '100vh', padding: '40px', display: 'flex', justifyContent: 'center' }}>
+    <div style={{ backgroundColor: '#e9f4f9', padding: '40px', display: 'flex', justifyContent: 'center' }}>
       <div
         style={{
           maxWidth: '600px',
