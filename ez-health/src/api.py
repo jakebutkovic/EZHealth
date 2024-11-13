@@ -4,10 +4,12 @@ client = OpenAI()
 completion = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
+        {
+            "role": "system", "content": "You are a medical interpreter that helps patients understand their diagnoses and symptoms and is here to concisely answer any questions they may have about their situation in layman's terms. Responses should be in a short paragraph format. Off-topic messages from the user should be responded to simply with: 'error, off-topic'"
+        },
         {
             "role": "user",
-            "content": "Write a haiku about recursion in programming."
+            "content": "My doctor told me that I have atrial fibrillation with rapid ventricular response. What does that mean?"
         }
     ]
 )
