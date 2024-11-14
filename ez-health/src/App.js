@@ -10,6 +10,7 @@ import SupportTicket from '/workspaces/EZHealth/ez-health/src/SupportTicket.js';
 import AINotesPatient from '/workspaces/EZHealth/ez-health/src/AINotesPatient';
 import PatientsList from '/workspaces/EZHealth/ez-health/src/PatientsList.js';
 import LoginButton from '/workspaces/EZHealth/ez-health/src/Login.js';
+import AIRequest from '/workspaces/EZHealth/ez-health/src/AskAI.js';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/ainotespatient" element={<AINotesPatient />} />
           <Route path="/patientslist" element={<PatientsList />} />
           <Route path="/login" element={<LoginButton />} />
+          <Route path="/askai" element={<AIRequest/>} />
         </Routes>
       </div>
     </Router>

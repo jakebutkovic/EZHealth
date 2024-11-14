@@ -56,6 +56,9 @@ function Navbar() {
           <li style={{ margin: '10px 0' }}>
             <Link to="/login" onClick={toggleMenu} style={{ textDecoration: 'none', color: '#333' }}>Login</Link>
           </li>
+          <li style={{ margin: '10px 0' }}>
+            <Link to="/AskAI" onClick={toggleMenu} style={{ textDecoration: 'none', color: '#333' }}>Ask AI</Link>
+          </li>
         </ul>
       )}
     </nav>
