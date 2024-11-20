@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { OpenAI } from 'openai';
+import React, { useState } from "react";
 
 function AIrequest() {
   const [description, setDescription] = useState("");
@@ -7,31 +6,27 @@ function AIrequest() {
   const [AIresponse, setAIresponse] = useState("");
 
   const responseGenerate = async (inputText) => {
-    // Initialize OpenAI client with the API key
-    const openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
-      dangerouslyAllowBrowser: true
-    });
+    const payload = { inputText };
 
     try {
-      const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        messages: [
-          {
-            role: "system",
-            content: "You are a medical interpreter that helps patients understand their diagnoses and symptoms and is here to concisely answer any questions they may have about their situation in layman's terms. Responses should be in a short paragraph format. Off-topic messages from the user should be responded to simply with: 'error, off-topic'",
-          },
-          {
-            role: "user",
-            content: `Assist the patient: "${inputText}"`,
-          },
-        ],
+      const result = await fetch("http://localhost:3000/AskAI", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
-      setAIresponse(completion.choices[0].message.content);
-      setSubmitStatus("Submit");
+      if (result.ok) {
+        const data = await result.json();
+        setAIresponse(data.response);
+        setSubmitStatus("Submit");
+      } else {
+        console.error("Error:", result.status);
+        setSubmitStatus("Retry");
+      }
     } catch (error) {
-      console.error(error);
+      console.error("Error:", error);
       setSubmitStatus("Retry");
     }
   };
