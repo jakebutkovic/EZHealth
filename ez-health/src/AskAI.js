@@ -4,7 +4,7 @@ import { OpenAI } from 'openai';
 function AIrequest() {
   const [description, setDescription] = useState("");
   const [submitStatus, setSubmitStatus] = useState("Submit");
-  const [dreamAnalysis, setDreamAnalysis] = useState("");
+  const [AIresponse, setAIresponse] = useState("");
 
   const responseGenerate = async (inputText) => {
     // Initialize OpenAI client with the API key
@@ -28,7 +28,7 @@ function AIrequest() {
         ],
       });
 
-      setDreamAnalysis(completion.choices[0].message.content);
+      setAIresponse(completion.choices[0].message.content);
       setSubmitStatus("Submit");
     } catch (error) {
       console.error(error);
@@ -44,19 +44,19 @@ function AIrequest() {
   return (
     <div className="App">
       <header className="App-header">
-        <h2>Dreamweaver</h2>
+        <h2>Ask AI</h2>
       </header>
       <div className="App-container">
         <textarea
           value={description}
-          placeholder="Tell me your dream"
+          placeholder="Ask your question here"
           onChange={(e) => setDescription(e.target.value)}
-          className="dream-description"
+          className="user-question"
         ></textarea>
         <button onClick={submitDescription} className="submit-button">
           {submitStatus}
         </button>
-        <span className="dream-analysis">{dreamAnalysis}</span>
+        <span className="AI-response">{AIresponse}</span>
       </div>
     </div>
   );
