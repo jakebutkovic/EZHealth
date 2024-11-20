@@ -1,22 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function PatientsList() {
-  const [patients, setPatients] = useState([
-    {
-      name: 'John Doe',
-      dob: '1990-01-01',
-      diagnosis: 'Hypertension',
-      notes: 'Patient needs to monitor blood pressure daily.',
-      symptoms: ['Headache', 'Dizziness'],
-    },
-    {
-      name: 'Jane Smith',
-      dob: '1985-05-15',
-      diagnosis: 'Diabetes',
-      notes: 'Patient needs to follow a strict diet and exercise regularly.',
-      symptoms: ['Fatigue', 'Blurred vision'],
-    },
-  ]);
+  const [patients, setPatients] = useState('');
+
+  useEffect(() => {
+    axios.get('http://127.0.0.1:5000/api/users')
+        .then((response) => {
+            setPatients(response.data.patients);
+        })
+        .catch((error) => {
+            console.error('Error fetching data:', error);
+        });
+}, [])
 
   return (
     <div style={{ backgroundColor: '#f0f4f8', minHeight: '100vh', padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

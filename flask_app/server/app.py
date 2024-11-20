@@ -14,14 +14,14 @@ def get_db():
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return 'Home Page Test'
 
-@app.route('/users', methods=['GET'])
-def get_users():
+@app.route('/api/patients', methods=['GET'])
+def get_patients():
     db = get_db()
-    query = "SELECT * FROM users"
-    users = db.execute(query).fetchall()
-    users_list = [dict(user) for user in users]
+    query = "SELECT * FROM patients"
+    patients = db.execute(query).fetchall()
+    patients_list = [dict(patient) for patient in patients]
     return jsonify(user_list)
 
 @app.teardown_appcontext
