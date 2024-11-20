@@ -1,84 +1,65 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { OpenAI } from 'openai';
 
-function AIRequest() {
-  const navigate = useNavigate();
-  const [requestText, setRequestText] = useState('');
+function AIrequest() {
+  const [description, setDescription] = useState("");
+  const [submitStatus, setSubmitStatus] = useState("Submit");
+  const [dreamAnalysis, setDreamAnalysis] = useState("");
 
-  const handleTextInputChange = (e) => {
-    setRequestText(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log({
-      requestText,
+  const responseGenerate = async (inputText) => {
+    // Initialize OpenAI client with the API key
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+      dangerouslyAllowBrowser: true
     });
-    setRequestText(''); // Clear the input field after submission
+
+    try {
+      const completion = await openai.chat.completions.create({
+        model: "gpt-4o-mini",
+        messages: [
+          {
+            role: "system",
+            content: "You are a medical interpreter that helps patients understand their diagnoses and symptoms and is here to concisely answer any questions they may have about their situation in layman's terms. Responses should be in a short paragraph format. Off-topic messages from the user should be responded to simply with: 'error, off-topic'",
+          },
+          {
+            role: "user",
+            content: `Assist the patient: "${inputText}"`,
+          },
+        ],
+      });
+
+      setDreamAnalysis(completion.choices[0].message.content);
+      setSubmitStatus("Submit");
+    } catch (error) {
+      console.error(error);
+      setSubmitStatus("Retry");
+    }
   };
 
-  const handleOutput = (requestText) => {
-    
-  }
+  const submitDescription = () => {
+    setSubmitStatus("Waiting");
+    responseGenerate(description);
+  };
 
   return (
-    <div style={{ backgroundColor: '#f2f7fa', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <div
-        style={{
-          maxWidth: '500px',
-          width: '100%',
-          backgroundColor: 'white',
-          padding: '30px',
-          borderRadius: '10px',
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-        }}
-      >
-        <h1 style={{ color: '#333', marginBottom: '20px', textAlign: 'center', fontSize: '24px' }}>Ask AI</h1>
-        <form onSubmit={handleSubmit}>
-          <div style={{ marginBottom: '20px' }}>
-            <label style={{ display: 'block', fontWeight: 'bold', color: '#555', marginBottom: '10px' }}>
-              Ask your question:
-            </label>
-            <textarea
-              value={requestText}
-              onChange={handleTextInputChange}
-              required
-              style={{
-                width: '100%',
-                height: '120px',
-                padding: '12px',
-                borderRadius: '5px',
-                border: '1px solid #ccc',
-                resize: 'vertical',
-                fontSize: '14px',
-                color: '#333',
-              }}
-              placeholder="Ask any medical-related question..."
-            />
-          </div>
-          <button
-            type="submit"
-            style={{
-              width: '100%',
-              padding: '12px',
-              backgroundColor: '#00796b',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              fontSize: '16px',
-              fontWeight: 'bold',
-              transition: 'background-color 0.3s',
-            }}
-            onMouseOver={(e) => (e.target.style.backgroundColor = '#005f54')}
-            onMouseOut={(e) => (e.target.style.backgroundColor = '#00796b')}
-          >
-            Ask AI
-          </button>
-        </form>
+    <div className="App">
+      <header className="App-header">
+        <h2>Dreamweaver</h2>
+      </header>
+      <div className="App-container">
+        <textarea
+          value={description}
+          placeholder="Tell me your dream"
+          onChange={(e) => setDescription(e.target.value)}
+          className="dream-description"
+        ></textarea>
+        <button onClick={submitDescription} className="submit-button">
+          {submitStatus}
+        </button>
+        <span className="dream-analysis">{dreamAnalysis}</span>
       </div>
     </div>
   );
 }
 
-export default AIRequest;
+export default AIrequest;

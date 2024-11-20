@@ -14,4 +14,12 @@ completion = client.chat.completions.create(
     ]
 )
 
-print(completion.choices[0].message)
+@app.route('/AskAI')
+def get_time():
+
+    return {
+      completion.choices[0].message
+        }
+
+
+#print(completion.choices[0].message)
