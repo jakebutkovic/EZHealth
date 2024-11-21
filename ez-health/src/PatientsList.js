@@ -5,7 +5,7 @@ function PatientsList() {
   const [patients, setPatients] = useState('');
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5000/api/users')
+    axios.get('http://127.0.0.1:5000/api/patients')
         .then((response) => {
             setPatients(response.data.patients);
         })
@@ -15,6 +15,13 @@ function PatientsList() {
 }, [])
 
   return (
+    <div>
+      <p>
+        {patients}
+      </p>
+    </div>
+
+    /*
     <div style={{ backgroundColor: '#f0f4f8', minHeight: '100vh', padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <h1 style={{ color: '#333', marginBottom: '20px' }}>Patients List</h1>
       <div style={{ maxWidth: '600px', width: '100%' }}>
@@ -47,6 +54,7 @@ function PatientsList() {
         ))}
       </div>
     </div>
+    */
   );
 }
 
