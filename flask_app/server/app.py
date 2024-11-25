@@ -1,14 +1,15 @@
-from flask import Flask, render_template, g
+from flask import Flask, render_template, g, jsonify
 import sqlite3
 
 app = Flask(__name__)
 
-DATABASE = '/workspaces/EZHealth/db/ezhealth1.db'
+DATABASE = 'db/ezhealth1.db'
 
 def get_db():
     db = getattr(g, '_ezhealth1', None)
     if db is None:
         db = g._ezhealth1 = sqlite3.connect(DATABASE)
+
         db.row_factory = sqlite3.Row
     return db
 
@@ -22,7 +23,7 @@ def get_patients():
     query = "SELECT * FROM patients"
     patients = db.execute(query).fetchall()
     patients_list = [dict(patient) for patient in patients]
-    return jsonify(user_list)
+    return jsonify(patients_list)
 
 @app.teardown_appcontext
 def close_connection(exception):

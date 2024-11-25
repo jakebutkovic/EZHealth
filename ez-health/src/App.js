@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from '/workspaces/EZHealth/ez-health/src/components/NavBar.js';
-import HomePage from '/workspaces/EZHealth/ez-health/src/Homepage.js';
-import UserProfile from '/workspaces/EZHealth/ez-health/src/Profile.js';
-import SymptomsPage from '/workspaces/EZHealth/ez-health/src/Symptoms.js';
-import AINotesPage from '/workspaces/EZHealth/ez-health/src/AINotes.js';
-import DoctorProfile from '/workspaces/EZHealth/ez-health/src/DoctorProfile.js';
-import SupportTicket from '/workspaces/EZHealth/ez-health/src/SupportTicket.js';
-import AINotesPatient from '/workspaces/EZHealth/ez-health/src/AINotesPatient';
-import PatientsList from '/workspaces/EZHealth/ez-health/src/PatientsList.js';
-import LoginButton from '/workspaces/EZHealth/ez-health/src/Login.js';
+import Navbar from '../src/components/NavBar.js'
+import HomePage from '../src/Homepage.js';
+import UserProfile from '../src/Profile.js';
+import SymptomsPage from '../src/Symptoms.js';
+import AINotesPage from '../src/AINotes.js';
+import DoctorProfile from '../src/DoctorProfile.js';
+import SupportTicket from '../src/SupportTicket.js';
+import AINotesPatient from '../src/AINotesPatient';
+import PatientsList from '../src/PatientsList.js';
+import LoginButton from '../src/Login.js';
 
 function App() {
   return (
