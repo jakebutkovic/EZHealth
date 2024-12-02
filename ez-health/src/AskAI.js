@@ -1,65 +1,72 @@
 import React, { useState } from 'react';
-import { OpenAI } from 'openai';
 
-function AIrequest() {
-  const [description, setDescription] = useState("");
-  const [submitStatus, setSubmitStatus] = useState("Submit");
-  const [AIresponse, setAIresponse] = useState("");
+function AskAIComponent() {
+  const [userInput, setUserInput] = useState('');
+  const [response, setResponse] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const responseGenerate = async (inputText) => {
-    // Initialize OpenAI client with the API key
-    const openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
-      dangerouslyAllowBrowser: true
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    setResponse('');
 
     try {
-      const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        messages: [
-          {
-            role: "system",
-            content: "You are a medical interpreter that helps patients understand their diagnoses and symptoms and is here to concisely answer any questions they may have about their situation in layman's terms. Responses should be in a short paragraph format. Off-topic messages from the user should be responded to simply with: 'error, off-topic'",
-          },
-          {
-            role: "user",
-            content: `Assist the patient: "${inputText}"`,
-          },
-        ],
+      const res = await fetch('/AskAI', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userInput }),
       });
 
-      setAIresponse(completion.choices[0].message.content);
-      setSubmitStatus("Submit");
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await res.json();
+      setResponse(data.response.content);
     } catch (error) {
-      console.error(error);
-      setSubmitStatus("Retry");
+      setError('An error occurred while fetching the response.');
+      console.error('Error:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const submitDescription = () => {
-    setSubmitStatus("Waiting");
-    responseGenerate(description);
-  };
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <h2>Ask AI</h2>
-      </header>
-      <div className="App-container">
+    <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
+      <h1>Medical Interpreter Assistant</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="userInput">
+          Enter your question:
+        </label>
         <textarea
-          value={description}
-          placeholder="Ask your question here"
-          onChange={(e) => setDescription(e.target.value)}
-          className="user-question"
-        ></textarea>
-        <button onClick={submitDescription} className="submit-button">
-          {submitStatus}
+          id="userInput"
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+          rows="4"
+          style={{ width: '100%', padding: '10px', marginTop: '10px' }}
+          required
+        />
+        <button type="submit" style={{ marginTop: '10px' }} disabled={loading}>
+          {loading ? 'Processing...' : 'Submit'}
         </button>
-        <span className="AI-response">{AIresponse}</span>
-      </div>
+      </form>
+      {error && (
+        <div style={{ color: 'red', marginTop: '20px' }}>
+          <p>{error}</p>
+        </div>
+      )}
+      {response && (
+        <div style={{ marginTop: '20px' }}>
+          <h2>Response:</h2>
+          <p>{response}</p>
+        </div>
+      )}
     </div>
   );
 }
 
-export default AIrequest;
+export default AskAIComponent;
